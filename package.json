@@ -1,0 +1,36 @@
+{
+  "name": "is_laos_phone_number",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "jest",
+    "release": "commit-and-tag-version"
+  },
+  "repository": {
+    "url": "https://github.com/Anousack789/is_laos_phone_number.git"
+  },
+  "keywords": [
+    "phone",
+    "phone number",
+    "validator",
+    "verify",
+    "laos",
+    "check",
+    "lao"
+  ],
+  "author": "Anousack Phounsilakone",
+  "license": "MIT",
+  "description": "is_laos_phone_number is a lightweight Node.js package designed to verify whether a phone number is valid and formatted as a Laos phone number. It offers a simple and efficient way to validate Lao phone numbers in your applications, ensuring compliance with local number formats and helping prevent invalid entries.",
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "commit-and-tag-version": "^12.4.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  }
+}
