@@ -18,3 +18,22 @@ Install the package via npm:
 
 ```bash
 npm install is_laos_phone_number
+```
+
+## Usage
+After installation, you can use the package as follows:
+
+```bash
+import  {  isLaosPhoneNumber  }  from  "is_laos_phone_number";
+
+// Example of a valid Laos phone number
+const  phoneNumber  =  '+85620XXXXXXXX';
+
+const  isValid  =  isLaosPhoneNumber(phoneNumber);
+
+if (isValid) {
+	console.log('The phone number is valid!');
+}  else  {
+	console.log('Invalid Laos phone number.');
+}
+```

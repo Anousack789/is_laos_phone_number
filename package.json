@@ -10,7 +10,7 @@
     "release": "commit-and-tag-version"
   },
   "repository": {
-    "url": "https://github.com/Anousack789/is_laos_phone_number.git"
+    "url": "https://github.com/Anousack789/is_laos_phone_number"
   },
   "keywords": [
     "phone",
