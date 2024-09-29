@@ -29,7 +29,7 @@ import isLaosPhoneNumber from  "is_laos_phone_number";
 // Example of a valid Laos phone number
 const  phoneNumber  =  '+85620XXXXXXXX';
 
-const  isValid  =  isLaosPhoneNumber(phoneNumber);
+const  isValid  =  isLaosPhoneNumber.verify(phoneNumber);
 
 if (isValid) {
 	console.log('The phone number is valid!');

@@ -11,7 +11,7 @@ const prefixFor7digit = [
   "030",
 ];
 
-export default function isLaosPhoneNumber(phoneNumber: string) {
+function verify(phoneNumber: string) {
   if (phoneNumber.length > 14) {
     return false;
   }
@@ -44,3 +44,5 @@ export default function isLaosPhoneNumber(phoneNumber: string) {
 
   return result;
 }
+
+export { verify };
