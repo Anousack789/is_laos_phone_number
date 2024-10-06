@@ -6,3 +6,4 @@ jest.config.js
 
 tsconfig.json
 tsup.config.ts
+CHANGELOG.md
