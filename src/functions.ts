@@ -1,48 +1,50 @@
-const prefixFor8digit = ["+85620", "85620", "20", "020"];
+import { laosNumberingPlan } from "./numbering-plan";
 
-const prefixFor7digit = [
-  "+85621",
-  "85621",
-  "21",
-  "021",
-  "+85630",
-  "85630",
-  "30",
-  "030",
-];
+const countryCode = "856";
 
-function verify(phoneNumber: string) {
-  if (phoneNumber.length > 14) {
+function containsOnlyDigits(value: string): boolean {
+  if (value.length === 0) {
     return false;
   }
 
-  // verify input number is number string
+  for (let index = 0; index < value.length; index += 1) {
+    const characterCode = value.charCodeAt(index);
 
-  const num = Number(phoneNumber);
-
-  if (isNaN(num) || num < 1) {
-    return false;
+    if (characterCode < 48 || characterCode > 57) {
+      return false;
+    }
   }
 
-  if (phoneNumber.length === 8) {
-    return true;
+  return true;
+}
+
+function nationalNumberFrom(phoneNumber: string): string | null {
+  let nationalNumber: string;
+
+  if (phoneNumber.startsWith(`+${countryCode}`)) {
+    nationalNumber = phoneNumber.slice(countryCode.length + 1);
+  } else if (phoneNumber.startsWith(countryCode)) {
+    nationalNumber = phoneNumber.slice(countryCode.length);
+  } else if (phoneNumber.startsWith("0")) {
+    nationalNumber = phoneNumber.slice(1);
+  } else {
+    return null;
   }
 
-  let result = prefixFor8digit.some(
-    (prefix) =>
-      phoneNumber.startsWith(prefix) &&
-      phoneNumber.replace(prefix, "").length === 8
+  return containsOnlyDigits(nationalNumber) ? nationalNumber : null;
+}
+
+function verify(phoneNumber: string): boolean {
+  const nationalNumber = nationalNumberFrom(phoneNumber);
+
+  return (
+    nationalNumber !== null &&
+    laosNumberingPlan.some(
+      ({ prefixes, nationalNumberLength }) =>
+        nationalNumber.length === nationalNumberLength &&
+        prefixes.some((prefix) => nationalNumber.startsWith(prefix))
+    )
   );
-
-  if (!result) {
-    result = prefixFor7digit.some(
-      (prefix) =>
-        phoneNumber.startsWith(prefix) &&
-        phoneNumber.replace(prefix, "").length === 7
-    );
-  }
-
-  return result;
 }
 
 export { verify };
